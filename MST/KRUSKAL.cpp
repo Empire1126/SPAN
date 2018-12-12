@@ -8,16 +8,16 @@ KRUSKAL::KRUSKAL()
 	
 }
 
-KRUSKAL::KRUSKAL(Graph graph)
+KRUSKAL::KRUSKAL(KGraph graph)
 {
 	kruskalGraph = graph;
-	edgeHeap = new Heap<0>(graph.sizeOfEdges, graph.edges);
-	MSTHeap = new Heap<1>(graph.sizeOfEdges);
+	edgeHeap = new KHeap<0>(graph.sizeOfEdges, graph.edges);
+	MSTHeap = new KHeap<1>(graph.sizeOfEdges);
 	MakeSet();
-	edgePtr sortedMinHeap = edgeHeap->HeapSort();
+	KEdgePtr sortedMinHeap = edgeHeap->HeapSort();
 	for(int j = graph.sizeOfEdges-1;j>0;j--)
 	{
-		edge nextMinEdge = sortedMinHeap[j];
+		KEdge nextMinEdge = sortedMinHeap[j];
 		if(nextMinEdge.initial->currentIndex!= nextMinEdge.destination->currentIndex)
 		{	
 			Union(nextMinEdge.initial, nextMinEdge.destination);
@@ -34,10 +34,10 @@ KRUSKAL::~KRUSKAL()
 
 void KRUSKAL::MakeSet()
 {
-	verticesSet = new vertexPtr*[kruskalGraph.sizeOfVertices];
+	verticesSet = new KVertexPtr*[kruskalGraph.sizeOfVertices];
 	for(int i=1;i<kruskalGraph.sizeOfVertices;i++)
 	{
-		verticesSet[i] = new vertexPtr[kruskalGraph.sizeOfVertices];
+		verticesSet[i] = new KVertexPtr[kruskalGraph.sizeOfVertices];
 		for(int j = 1;j<kruskalGraph.sizeOfVertices;j++)
 		{
 			verticesSet[i][j] = nullptr;
@@ -58,7 +58,7 @@ void KRUSKAL::MakeSet()
 }
 
 
-void KRUSKAL::Union(vertexPtr initial, vertexPtr destination)
+void KRUSKAL::Union(KVertexPtr initial, KVertexPtr destination)
 {
 	
 	for(int i =1;i< kruskalGraph.sizeOfVertices;i++)

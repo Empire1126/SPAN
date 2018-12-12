@@ -1,6 +1,6 @@
 #pragma once 
 #include <type_traits>
-#include "Edge.h"
+#include "KEdge.h"
 #include <iostream>
 
 constexpr bool isMaxHeap(bool isMax)
@@ -8,16 +8,16 @@ constexpr bool isMaxHeap(bool isMax)
 	return isMax;
 }
 
-template <bool isMax,typename = void> class Heap
+template <bool isMax,typename = void> class KHeap
 {	
 public:
-	Heap(int size)
+	KHeap(int size)
 	{
-		minHeap = new edge[size];
+		minHeap = new KEdge[size];
 		length = size;
 		heapSize = 0;
 	}
-	Heap(int size, edgePtr newHeap)
+	KHeap(int size, KEdgePtr newHeap)
 	{
 		minHeap = newHeap;
 		heapSize = size;
@@ -27,9 +27,9 @@ public:
 			minHeapify(i);
 		}
 	}
-	~Heap(){}
+	~KHeap(){}
 
-	void insert(edge key)
+	void insert(KEdge key)
 	{
 		if(heapSize==length)
 		{
@@ -39,26 +39,26 @@ public:
 		heapSize++;					
 		decreaseKey(heapSize, key);
 	}
-	edgePtr minimum()
+	KEdgePtr minimum()
 	{
 		return &minHeap[1];
 	}
-	edge extractMin()
+	KEdge extractMin()
 	{
 		if(heapSize<1)
 		{
 			std::cout << "heap underflow "<<"\n";
-			edge nothing;
+			KEdge nothing;
 			return nothing;
 		}
-		edge min = minHeap[1];
+		KEdge min = minHeap[1];
 		delete &minHeap[1];
-		minHeap[1] = minHeap[heapSize];
+		minHeap[1] = minHeap[heapSize-1];
 		heapSize--;
 		minHeapify(1);
 		return min;
 	}
-	void decreaseKey(int index, edge key)
+	void decreaseKey(int index, KEdge key)
 	{
 		if(key.weight > minHeap[index].weight)
 		{
@@ -72,7 +72,7 @@ public:
 			index = getParent(index);
 		}
 	}
-	edgePtr HeapSort()
+	KEdgePtr HeapSort()
 	{
 		for(int i = heapSize-1 ;i>1;i--)
 		{
@@ -89,7 +89,7 @@ public:
 private:
 	int length = 0;
 	int heapSize = 0;
-	edgePtr minHeap = nullptr;
+	KEdgePtr minHeap = nullptr;
 	int getLeftChild(int index)
 	{
 		return (2*index);
@@ -127,7 +127,7 @@ private:
 	}
 	void swap(int index,int smallestKeyIndex)
 	{
-		edge largerKey = minHeap[index];		
+		KEdge largerKey = minHeap[index];		
 		minHeap[index] = minHeap[smallestKeyIndex];
 		minHeap[smallestKeyIndex] = largerKey;
 	}
@@ -136,16 +136,16 @@ private:
 
 
 
-template<bool isMax> class Heap<isMax, typename std::enable_if<isMaxHeap(isMax)>::type>
+template<bool isMax> class KHeap<isMax, typename std::enable_if<isMaxHeap(isMax)>::type>
 {
 public:
-	Heap(int size)
+	KHeap(int size)
 	{
-		maxHeap = new edge[size];
+		maxHeap = new KEdge[size];
 		length = size;
 		heapSize = 0;
 	}
-	Heap(int size, edgePtr newHeap)
+	KHeap(int size, KEdgePtr newHeap)
 	{
 		maxHeap = newHeap;
 		heapSize = size;
@@ -155,9 +155,9 @@ public:
 			maxHeapify(i);
 		}
 	}
-	~Heap() {}
+	~KHeap() {}
 
-	void insert(edge key)
+	void insert(KEdge key)
 	{
 		if (heapSize == length)
 		{
@@ -167,26 +167,26 @@ public:
 		heapSize++;
 		increaseMSTKey(heapSize, key);
 	}
-	edgePtr maximum()
+	KEdgePtr maximum()
 	{
 		return &maxHeap[1];
 	}
-	edge extractMax()
+	KEdge extractMax()
 	{
 		if (heapSize < 1)
 		{
 			std::cout << "heap underflow " << "\n";
-			edge nothing;
+			KEdge nothing;
 			return nothing;
 		}
-		edge max = maxHeap[1];
+		KEdge max = maxHeap[1];
 		delete &maxHeap[1];
-		maxHeap[1] = maxHeap[heapSize];
+		maxHeap[1] = maxHeap[heapSize-1];
 		heapSize--;
 		maxHeapify(1);
 		return max;
 	}
-	void increaseMSTKey(int index, edge key)	{
+	void increaseMSTKey(int index, KEdge key)	{
 		
 		if(index==1)
 		{
@@ -202,7 +202,7 @@ public:
 			index = getParent(index);			
 		}
 	}
-	edgePtr HeapSort()
+	KEdgePtr HeapSort()
 	{
 		for (int i = heapSize; i > 1; i--)
 		{
@@ -229,7 +229,7 @@ private:
 	int length = 0;
 	int heapSize = 0;
 	int MSTWeight = 0;
-	edgePtr maxHeap = nullptr;
+	KEdgePtr maxHeap = nullptr;
 	int getLeftChild(int index)
 	{
 		return (2 * index);
@@ -270,7 +270,7 @@ private:
 	}
 	void swap(int index, int smallest)
 	{
-		edge temp = maxHeap[index];
+		KEdge temp = maxHeap[index];
 		maxHeap[index] = maxHeap[smallest];
 		maxHeap[smallest] = temp;
 	}

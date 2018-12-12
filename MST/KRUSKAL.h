@@ -1,24 +1,24 @@
 #pragma once
-#include "Vertex.h"
-#include "Graph.h"
-#include "Heap.h"
-class Graph;
+#include "KVertex.h"
+#include "KGraph.h"
+#include "KHeap.h"
+class KGraph;
 
 class KRUSKAL
 {
 public:
-	KRUSKAL(Graph graph);
+	KRUSKAL(KGraph graph);
 	KRUSKAL();
 	~KRUSKAL();	
 private:
-	Graph kruskalGraph;
-	Heap<0>* edgeHeap;
-	Heap<1>* MSTHeap;
-	Vertex*** verticesSet;
+	KGraph kruskalGraph;
+	KHeap<0>* edgeHeap;
+	KHeap<1>* MSTHeap;
+	KVertex*** verticesSet;
 	void MakeSet();
 	
 	//void FindSet();
-	void Union(vertexPtr inital,vertexPtr destination);
+	void Union(KVertexPtr inital,KVertexPtr destination);
 	
 	void printMSTHeap();
 };

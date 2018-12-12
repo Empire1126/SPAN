@@ -2,14 +2,14 @@
 #include <string>
 
 
-class Vertex
+class KVertex
 {
 public:
-	Vertex();
-	~Vertex();
+	KVertex();
+	~KVertex();
 	std::string name;
 	int currentIndex = 0;
 	int id = 0;
 };
-typedef Vertex* vertexPtr;
+typedef KVertex* KVertexPtr;
 

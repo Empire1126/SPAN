@@ -152,20 +152,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Edge.h" />
-    <ClInclude Include="Graph.h" />
-    <ClInclude Include="Heap.h" />
+    <ClInclude Include="KEdge.h" />
+    <ClInclude Include="KGraph.h" />
+    <ClInclude Include="KHeap.h" />
     <ClInclude Include="KRUSKAL.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="PEdge.h" />
+    <ClInclude Include="PGraph.h" />
+    <ClInclude Include="PHeap.h" />
+    <ClInclude Include="PMSTHeap.h" />
     <ClInclude Include="PRIM.h" />
-    <ClInclude Include="Vertex.h" />
+    <ClInclude Include="KVertex.h" />
+    <ClInclude Include="PVertex.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Edge.cpp" />
-    <ClCompile Include="Graph.cpp" />
-    <ClCompile Include="Heap.cpp" />
+    <ClCompile Include="KEdge.cpp" />
+    <ClCompile Include="KGraph.cpp" />
+    <ClCompile Include="KHeap.cpp" />
     <ClCompile Include="KRUSKAL.cpp" />
+    <ClCompile Include="PEdge.cpp" />
+    <ClCompile Include="PGraph.cpp" />
+    <ClCompile Include="PHeap.cpp" />
+    <ClCompile Include="PMSTHeap.cpp" />
     <ClCompile Include="PRIM.cpp" />
+    <ClCompile Include="PVertex.cpp" />
     <ClCompile Include="SPAN.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -173,7 +183,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Vertex.cpp" />
+    <ClCompile Include="KVertex.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
