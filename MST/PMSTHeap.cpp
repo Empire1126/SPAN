@@ -15,24 +15,16 @@ PMSTHeap::PMSTHeap(int size)
 
 PVertex* PMSTHeap::extractMax()
 {
-	if (heapSize < 2)
+	if (heapSize < 1)
 	{		
 		PVertex* nothing=nullptr;
 		return nothing;
 	}	
-	PVertex* max = vertexArray[1];
-	if(max->parent==max)
-	{
-		vertexArray[1] = nullptr;
-		vertexArray[1] = vertexArray[heapSize];
-		maxHeapify(1);
-		return max;
-	}
+	PVertex* max = vertexArray[1];	
 	vertexArray[1] = nullptr;
-	heapSize--;
 	vertexArray[1] = vertexArray[heapSize];
-	maxHeapify(1);
-	
+	heapSize--;	
+	maxHeapify(1);	
 	return max;
 }
 
