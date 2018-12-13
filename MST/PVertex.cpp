@@ -10,3 +10,13 @@ PVertex::PVertex()
 PVertex::~PVertex()
 {
 }
+
+
+PEdge::PEdge()
+{
+}
+
+
+PEdge::~PEdge()
+{
+}

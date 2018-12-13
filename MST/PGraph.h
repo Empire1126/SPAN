@@ -6,7 +6,7 @@ class PGraph
 public:
 	PGraph();
 	~PGraph();
-	PVertex* vertices;
+	PVertex** vertices;
 	int sizeOfVertices = 0;
 };
 

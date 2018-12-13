@@ -53,7 +53,7 @@ public:
 		}
 		KEdge min = minHeap[1];
 		delete &minHeap[1];
-		minHeap[1] = minHeap[heapSize-1];
+		minHeap[1] = minHeap[heapSize];
 		heapSize--;
 		minHeapify(1);
 		return min;
@@ -175,13 +175,14 @@ public:
 	{
 		if (heapSize < 1)
 		{
-			std::cout << "heap underflow " << "\n";
+			
 			KEdge nothing;
+			nothing.destination = nullptr;
+			nothing.initial = nullptr;
 			return nothing;
 		}
-		KEdge max = maxHeap[1];
-		delete &maxHeap[1];
-		maxHeap[1] = maxHeap[heapSize-1];
+		KEdge max = maxHeap[1];		
+		maxHeap[1] = maxHeap[heapSize];
 		heapSize--;
 		maxHeapify(1);
 		return max;
@@ -196,7 +197,7 @@ public:
 		}
 		maxHeap[index] = key;
 		MSTWeight += key.weight;		
-		while (index > 1 && maxHeap[getParent(index)].initial->name + maxHeap[getParent(index)].destination->name > maxHeap[index].initial->name + maxHeap[index].destination->name)
+		while (index > 1 && (maxHeap[getParent(index)].initial->name + maxHeap[getParent(index)].destination->name) > (maxHeap[index].initial->name + maxHeap[index].destination->name))
 		{
 			swap(index, getParent(index));
 			index = getParent(index);			
@@ -204,7 +205,7 @@ public:
 	}
 	KEdgePtr HeapSort()
 	{
-		for (int i = heapSize; i > 1; i--)
+		for (int i = heapSize-1; i > 1; i--)
 		{
 			swap(1, i);
 			heapSize--;
@@ -215,20 +216,17 @@ public:
 	void printMaxHeap()
 	{
 		std::cout << MSTWeight << "\n";
-		HeapSort();
-		for (int i = 1; i <= length; i++)
-		{
-			if(maxHeap[i].initial!=nullptr&&maxHeap[i].destination!=nullptr)
-			{
-				std::cout << maxHeap[i].initial->name + "-" + maxHeap[i].destination->name + ": " << maxHeap[i].weight;
-			}
-			
+		KEdge nextEdge = extractMax();
+		while(nextEdge.destination!=nullptr)
+		{		
+			std::cout << nextEdge.initial->name + "-" + nextEdge.destination->name + ": " << nextEdge.weight <<"\n";
+			nextEdge = extractMax();			
 		}
 	}
 private:
 	int length = 0;
 	int heapSize = 0;
-	int MSTWeight = 0;
+	double MSTWeight = 0;
 	KEdgePtr maxHeap = nullptr;
 	int getLeftChild(int index)
 	{
@@ -250,15 +248,12 @@ private:
 	{
 		int left = getLeftChild(index);
 		int right = getRightChild(index);
-		int largest = index;
-		std::string leftName = maxHeap[left].initial->name + maxHeap[left].destination->name;
-		std::string rightName = maxHeap[right].initial->name + maxHeap[right].destination->name;
-		std::string indexName = maxHeap[index].initial->name + maxHeap[index].destination->name;
-		if (left < heapSize && leftName > indexName)
+		int largest = index;	
+		if (left < heapSize && (maxHeap[left].initial->name + maxHeap[left].destination->name)< maxHeap[largest].initial->name + maxHeap[largest].destination->name)
 		{
 			largest = left;
 		}
-		if (right < heapSize && rightName > indexName)
+		if (right < heapSize && (maxHeap[right].initial->name + maxHeap[right].destination->name) < (maxHeap[largest].initial->name + maxHeap[largest].destination->name))
 		{
 			largest = right;
 		}

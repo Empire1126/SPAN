@@ -39,9 +39,6 @@
     <ClInclude Include="PVertex.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PEdge.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="KHeap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -78,9 +75,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PVertex.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PEdge.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="KHeap.cpp">

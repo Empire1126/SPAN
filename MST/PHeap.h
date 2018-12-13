@@ -1,18 +1,18 @@
 #pragma once
-#include "PVertex.h"
-
+#include "PMSTHeap.h"
 
 class PHeap
 {
 public:
-	PHeap(int size, PVertex* vertices);
+	PHeap(int size, PVertex** vertices);
 	~PHeap();
-	bool isEmpty();
-	PVertex extractMin();
+	int isNotEmpty();
+	PVertex* extractMin();
+	void increaseKeyValue(PVertex* key, double value);
 private:
 	int length = 0;
 	int heapSize = 0;
-	PVertex* vertexArray = nullptr;
+	PVertex** vertexArray = nullptr;
 	int getLeftChild(int index);
 	int getRightChild(int index);
 	int getParent(int index);

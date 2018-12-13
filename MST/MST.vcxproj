@@ -157,7 +157,6 @@
     <ClInclude Include="KHeap.h" />
     <ClInclude Include="KRUSKAL.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="PEdge.h" />
     <ClInclude Include="PGraph.h" />
     <ClInclude Include="PHeap.h" />
     <ClInclude Include="PMSTHeap.h" />
@@ -170,7 +169,6 @@
     <ClCompile Include="KGraph.cpp" />
     <ClCompile Include="KHeap.cpp" />
     <ClCompile Include="KRUSKAL.cpp" />
-    <ClCompile Include="PEdge.cpp" />
     <ClCompile Include="PGraph.cpp" />
     <ClCompile Include="PHeap.cpp" />
     <ClCompile Include="PMSTHeap.cpp" />

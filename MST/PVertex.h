@@ -1,8 +1,8 @@
 #pragma once
 #include <string>
 #include <iostream>
-#include "PEdge.h"
 
+class PEdge;
 class PVertex
 {
 public:
@@ -11,6 +11,15 @@ public:
 	std::string name;
 	double traverseValue = INT_MAX;
 	PVertex* parent = nullptr;
-	PEdge* nextEdge = nullptr;	
+	PEdge* nextEdge = nullptr;
+	bool isInMST = false;
 };
-
+class PEdge
+{
+public:
+	PEdge();
+	~PEdge();
+	PVertex* destinationVertex = nullptr;
+	PEdge* nextEdge = nullptr;
+	double weight = 0;
+};

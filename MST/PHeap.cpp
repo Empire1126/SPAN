@@ -3,7 +3,7 @@
 
 
 
-PHeap::PHeap(int size, PVertex* vertices)
+PHeap::PHeap(int size, PVertex** vertices)
 {
 	length = size;
 	heapSize = size;
@@ -14,26 +14,45 @@ PHeap::PHeap(int size, PVertex* vertices)
 	}
 }
 
-bool PHeap::isEmpty()
+int PHeap::isNotEmpty()
+{	
+	return heapSize-1;
+}
+
+void PHeap::increaseKeyValue(PVertex* key, double value)
 {
-	return heapSize;
+	for(int i =1;i<heapSize;i++)
+	{
+		if(vertexArray[i]==key)
+		{
+			vertexArray[i]->traverseValue = value;
+			int index = i;
+			while(index>1 && vertexArray[getParent(index)]->traverseValue > key->traverseValue)
+			{
+				swap(index, getParent(index));
+				index = getParent(index);
+			}
+			break;
+		}
+	}
+
 }
 
 
 PHeap::~PHeap()
 {
 }
-PVertex PHeap::extractMin()
+PVertex* PHeap::extractMin()
 {
 	if(heapSize<1)
 	{
 		std::cout << "heap underflow " << "\n";
-		PVertex nothing;
+		PVertex* nothing=nullptr;
 		return nothing;
 	}
-	PVertex min = vertexArray[1];
-	delete &vertexArray[1];
-	vertexArray[1] = vertexArray[heapSize];
+	PVertex* min = vertexArray[1];
+	vertexArray[1] = nullptr;
+	vertexArray[1] = vertexArray[heapSize-1];
 	heapSize--;
 	minHeapify(1);
 	return min;
@@ -55,11 +74,11 @@ void PHeap::minHeapify(int index)
 	int left = getLeftChild(index);
 	int right = getRightChild(index);
 	int smallest = index;
-	if (left < heapSize&&vertexArray[left].traverseValue < vertexArray[smallest].traverseValue)
+	if (left < heapSize&&vertexArray[left]->traverseValue< vertexArray[smallest]->traverseValue)
 	{
 		smallest = left;
 	}
-	if (right < heapSize&&vertexArray[right].traverseValue< vertexArray[smallest].traverseValue)
+	if (right < heapSize&&vertexArray[right]->traverseValue< vertexArray[smallest]->traverseValue)
 	{
 		smallest = right;
 	}
@@ -71,7 +90,7 @@ void PHeap::minHeapify(int index)
 }
 void PHeap::swap(int index, int smallest)
 {
-	PVertex largerVertex = vertexArray[index];
+	PVertex* largerVertex = vertexArray[index];
 	vertexArray[index] = vertexArray[smallest];
 	vertexArray[smallest] = largerVertex;
 }
