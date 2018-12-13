@@ -1,6 +1,9 @@
 #include "pch.h"
 #include "PVertex.h"
-
+//PVertex.cpp
+// Luke Pinkney
+// EECS 2510 Fall 2018
+// 12/10/18
 
 PVertex::PVertex()
 {

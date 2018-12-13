@@ -1,6 +1,9 @@
 #pragma once
 #include <string>
-
+//KVertex.h
+// Luke Pinkney
+// EECS 2510 Fall 2018
+// 12/10/18
 
 class KVertex
 {

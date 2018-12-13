@@ -1,6 +1,9 @@
 #pragma once
 #include "KEdge.h"
-
+//KGraph.h
+//Luke Pinkney
+//EECS 2510 Fall 2018
+//12/10/18
 class KGraph
 {
 	//class to hold the vertices and edges that make up a graph for kruskals algorithim

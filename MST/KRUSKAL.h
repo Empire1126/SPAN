@@ -2,7 +2,10 @@
 #include "KVertex.h"
 #include "KGraph.h"
 #include "KHeap.h"
-class KGraph;
+//KRUSKAL.h
+// Luke Pinkney
+// EECS 2510 Fall 2018
+// 12/10/18
 
 class KRUSKAL
 {

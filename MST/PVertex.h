@@ -1,6 +1,11 @@
 #pragma once
 #include <string>
 #include <iostream>
+//PVertex.h
+// Luke Pinkney
+// EECS 2510 Fall 2018
+// 12/10/18
+
 
 class PEdge;//declare Pedge class
 class PVertex

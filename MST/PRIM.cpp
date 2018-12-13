@@ -1,6 +1,9 @@
 #include "pch.h"
 #include "PRIM.h"
-
+//Prim.cpp
+// Luke Pinkney
+// EECS 2510 Fall 2018
+// 12/10/18
 
 
 PRIM::PRIM(::PGraph* PrimGraph)

@@ -1,5 +1,9 @@
 #pragma once
 #include "PHeap.h"
+//Prim.h
+// Luke Pinkney
+// EECS 2510 Fall 2018
+// 12/10/18
 
 class PRIM
 {

@@ -2,7 +2,10 @@
 #include <type_traits>
 #include "KEdge.h"
 #include <iostream>
-
+//KHeap.h
+// Luke Pinkney
+// EECS 2510 Fall 2018
+// 12/10/18
 
 constexpr bool isMaxHeap(bool isMax)
 {

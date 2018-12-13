@@ -1,6 +1,9 @@
 #include "pch.h"
 #include "PHeap.h"
-
+//PHeap.cpp
+// Luke Pinkney
+// EECS 2510 Fall 2018
+// 12/10/18
 
 
 PHeap::PHeap(int size, PVertex** vertices)
