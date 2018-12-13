@@ -7,6 +7,7 @@ class PVertex
 {
 public:
 	PVertex();
+	PVertex(std::string initialName);
 	~PVertex();
 	std::string name;
 	double traverseValue = INT_MAX;

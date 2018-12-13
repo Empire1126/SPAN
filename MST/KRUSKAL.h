@@ -7,11 +7,11 @@ class KGraph;
 class KRUSKAL
 {
 public:
-	KRUSKAL(KGraph graph);
+	KRUSKAL(KGraph* graph);
 	KRUSKAL();
 	~KRUSKAL();	
 private:
-	KGraph kruskalGraph;
+	KGraph* kruskalGraph;
 	KHeap<0>* edgeHeap;
 	KHeap<1>* MSTHeap;
 	KVertex*** verticesSet;

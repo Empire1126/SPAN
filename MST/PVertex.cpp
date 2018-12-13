@@ -6,6 +6,10 @@ PVertex::PVertex()
 {
 }
 
+PVertex::PVertex(std::string initialName)
+{
+	name = initialName;
+}
 
 PVertex::~PVertex()
 {
