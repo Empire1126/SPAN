@@ -8,6 +8,7 @@ PVertex::PVertex()
 
 PVertex::PVertex(std::string initialName)
 {
+	//create a new pvertex with a new name
 	name = initialName;
 }
 
